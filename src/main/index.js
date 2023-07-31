@@ -31,5 +31,13 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   ipcMain.handle('ping', () => 'pong')
+  ipcMain.on('set-title', handleSetTitle)
+  
   createWindow()
 })
+
+function handleSetTitle(event, title) {
+  const webContents = event.sender
+  const win = BrowserWindow.fromWebContents(webContents)
+  win.setTitle(title)
+}

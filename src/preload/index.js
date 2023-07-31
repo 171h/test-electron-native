@@ -15,3 +15,7 @@ contextBridge.exposeInMainWorld('myAPI', {
   send: ipcRenderer.send, // error here
   loadPreferences: () => ipcRenderer.invoke('load-prefs'),
 })
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  setTitle: (title) => ipcRenderer.send('set-title', title),
+})
