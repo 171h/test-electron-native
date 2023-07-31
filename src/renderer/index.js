@@ -10,3 +10,7 @@ const func = async () => {
 }
 
 func()
+
+// test
+console.log('renderer/index.js',window.versions)
+console.log('renderer/index.js',window.versions.chrome())

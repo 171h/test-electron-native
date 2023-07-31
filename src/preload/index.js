@@ -9,3 +9,9 @@ contextBridge.exposeInMainWorld('versions', {
   test: 'test variable',
   ping: () => ipcRenderer.invoke('ping')
 })
+
+
+contextBridge.exposeInMainWorld('myAPI', {
+  send: ipcRenderer.send, // error here
+  loadPreferences: () => ipcRenderer.invoke('load-prefs'),
+})
