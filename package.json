@@ -1,23 +1,16 @@
 {
-  "name": "demo",
+  "name": "test-electron-native",
   "version": "1.0.0",
-  "description": "my first electron app",
-  "main": "main.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/171h/demo-electron.git"
-  },
+  "description": "",
+  "main": "src/main/index.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["electron", "javascript", "native"],
   "author": "171h",
   "license": "MIT",
   "devDependencies": {
-    "@electron-forge/cli": "^6.1.1",
-    "electron-prebuilt-compile": "24.1.2"
-  },
-  "dependencies": {}
+    "electron": "^25.3.2"
+  }
 }
