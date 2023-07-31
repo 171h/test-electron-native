@@ -11,8 +11,19 @@
   <h1>Hello from Electron renderer!</h1>
   <p>👋</p>
   <div id="info">info</div>
-  <input id="title" type="text" value="new title">
-  <input id="set-title" type="button" value="set title" />
+  <div>
+    <h1>Test ipc pattern1 render to main</h1>
+    <input id="title" type="text" value="new title">
+    <input id="set-title" type="button" value="set title" />
+  </div>
+  <div>
+    <h1>Test ipc pattern2 two-way</h1>
+    <input id="open-file" type="button" value="open file">
+    <div>
+      File path: <strong id="file-path"></strong>
+    </div>
+  </div>
+
 </body>
 <script src="./index.js"></script>
 
