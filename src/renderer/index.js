@@ -30,3 +30,12 @@ btnOpenFile.addEventListener('click', async () => {
   const filePath = await window.electronAPI.openFile()
   filePathElement.innerText = filePath
 })
+
+// ipc pattern3 - main to renderer
+const counter = document.getElementById('counter')
+window.electronAPI.onUpdateCounter((event, count) => {
+  const oldValue = Number(counter.innerText)
+  const newValue = oldValue + count
+  counter.innerText = newValue
+  event.sender.send('counter-value', newValue)
+})

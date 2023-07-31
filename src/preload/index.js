@@ -19,4 +19,14 @@ contextBridge.exposeInMainWorld('myAPI', {
 contextBridge.exposeInMainWorld('electronAPI', {
   setTitle: (title) => ipcRenderer.send('set-title', title),
   openFile: () => ipcRenderer.invoke('dialog:openFile'),
+  onUpdateCounter: (callback) => ipcRenderer.on('update-counter', callback)
 })
+
+// window.addEventListener('DOMContentLoaded', () => {
+//   const counter = document.getElementById('counter')
+//   ipcRenderer.on('update-counter', (event, count) => {
+//     const oldValue = Number(counter.innerText)
+//     const newValue = oldValue + count
+//     counter.innerText = newValue
+//   })
+// })

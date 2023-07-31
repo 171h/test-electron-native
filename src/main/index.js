@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, Menu } = require('electron')
 const path = require('path')
 
 console.log('Hello Electron from main index.js 👋')
@@ -24,6 +24,22 @@ const createWindow = () => {
     }
   })
 
+  const menu = Menu.buildFromTemplate([
+    {
+      label: app.name,
+      submenu: [
+        {
+          label: 'Increment',
+          click: () => win.webContents.send('update-counter', 1),
+        }, {
+          label: 'Decrement',
+          click: () => win.webContents.send('update-counter', -1),
+        }
+      ]
+    }
+  ])
+  Menu.setApplicationMenu(menu)
+
   win.loadFile('src/renderer/index.html')
 
   win.webContents.openDevTools()
@@ -33,6 +49,9 @@ app.whenReady().then(() => {
   ipcMain.handle('ping', () => 'pong')
   ipcMain.on('set-title', handleSetTitle)
   ipcMain.handle('dialog:openFile', handleFileOpen)
+  ipcMain.on('counter-value', (event, count) => {
+    console.log('counter-value', count)
+  })
   createWindow()
 })
 
